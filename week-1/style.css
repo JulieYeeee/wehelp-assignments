@@ -1,0 +1,213 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f2f0eb;
+}
+
+header {
+  position: relative;
+}
+
+header .menu-btn {
+  position: absolute;
+  width: 50px;
+  height: 6rem;
+  right: 10px;
+  color: rgba(0, 0, 0, 0);
+}
+
+header .menu-btn::before {
+  content: " ";
+  width: 48px;
+  height: 5px;
+  background-color: #261615;
+  position: absolute;
+  top: 50%;
+  right: 1px;
+  -webkit-box-shadow: 0px 15px 0px #261615, 0px -15px 0px #261615;
+          box-shadow: 0px 15px 0px #261615, 0px -15px 0px #261615;
+}
+
+header #menu1 {
+  position: absolute;
+  z-index: -100;
+  opacity: 0;
+}
+
+header section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 300px;
+  font-size: 2em;
+  background-color: #f2f0eb;
+}
+
+nav {
+  height: 6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #a6907c;
+}
+
+nav div.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+}
+
+nav div.logo h1 {
+  font-size: 20px;
+  text-align: center;
+  margin-left: 1rem;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0.5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #261615;
+}
+
+main {
+  margin: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 20px;
+}
+
+main div.items-container {
+  width: 1200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main div.items-container div.items {
+  width: 24%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+main div.items-container div.items div.pic-container {
+  width: 100%;
+  height: 0px;
+  padding-bottom: 65.25%;
+  overflow: hidden;
+}
+
+main div.items-container div.items div.pic-container img {
+  width: 100%;
+}
+
+p.item-title {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #261615;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1201px) {
+  main div.items-container {
+    width: 90%;
+  }
+  main div.items-container div.items {
+    width: 49%;
+  }
+}
+
+@media screen and (max-width: 601px) {
+  body {
+    overflow-x: hidden;
+  }
+  header ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 30%;
+    height: 100vh;
+    position: absolute;
+    top: 6rem;
+    right: -100%;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    background-color: #a6907c;
+  }
+  header input[type="checkbox"]:checked ~ nav ul {
+    right: 0px;
+    -webkit-transition: ease 0.3s;
+    transition: ease 0.3s;
+  }
+  header h2 {
+    text-align: center;
+  }
+  main {
+    margin: 0;
+  }
+  main div.items-container {
+    width: 90%;
+  }
+  main div.items-container div.items {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .menu-btn {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.css.map */
