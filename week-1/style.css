@@ -168,7 +168,7 @@ p.item-title {
 }
 
 @media screen and (max-width: 601px) {
-  body {
+  html,body {
     overflow-x: hidden;
   }
   header ul {
