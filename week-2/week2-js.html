@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //第一題//
+      function calculate(min, max) {
+        // 請用你的程式補完這個函式的區塊
+        let result = 0;
+        for (i = min; i <= max; i++) {
+          result += i;
+        }
+        console.log(result);
+      }
+      calculate(1, 3); // 你的程式要能夠計算 1+2+3，最後印出 6
+      calculate(4, 8); // 你的程式要能夠計算 4+5+6+7+8，最後印出 30
+
+      //第二題//
+      function avg(data) {
+        // 請用你的程式補完這個函式的區塊
+        if (data["count"] !== 0) {
+          let result = 0;
+          let emp = data.employees;
+          for (i = 0; i < emp.length; i++) {
+            result += emp[i].salary;
+          }
+          result /= data["count"];
+          console.log(result);
+        } else {
+          console.log("There's no employee.");
+        }
+      }
+
+      avg({
+        count: 3,
+        employees: [
+          {
+            name: "John",
+            salary: 30000,
+          },
+          {
+            name: "Bob",
+            salary: 60000,
+          },
+          {
+            name: "Jenny",
+            salary: 50000,
+          },
+        ],
+      }); // 呼叫 avg 函式
+
+      //第三題//
+      function maxProduct(nums) {
+        // 請用你的程式補完這個函式的區塊
+        let biggest = -Infinity; //創造一個承接最後結果的變數
+        //因為考慮到陣列內可能都是負數，會有負負得正的結果，故要以最後相乘結果來比較，不能以最大的兩個數相乘
+        //但須排除與自身相乘的可能，故在每次相乘時要先slpice自己
+        for (i = 0; i < nums.length; i++) {
+          let first = nums[i];
+          nums.splice(i, 1);
+          for (j = 0; j < nums.length; j++) {
+            if (first * nums[j] > biggest) {
+              biggest = first * nums[j];
+            }
+          }
+          nums.unshift(first);
+        }
+        console.log(biggest);
+      }
+
+      maxProduct([5, 20, 2, 6]); // 得到 120
+      maxProduct([10, -20, 0, 3]); // 得到 30
+      maxProduct([-1, 2]); // 得到 -2
+      maxProduct([-1, 0, 2]); // 得到 0
+      maxProduct([-1, -2, 0]); // 得到 2
+
+      //第四題
+      function twoSum(nums, target) {
+        // your code here
+        for (i = 0; i < nums.length; i++) {
+          for (j = 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+              return [i, j];
+            }
+          }
+        }
+      }
+
+      let result = twoSum([2, 11, 7, 15], 9);
+      console.log(result); // show [0, 2] because nums[0]+nums[2] is 9
+    </script>
+  </body>
+</html>
