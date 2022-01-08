@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function maxZeros(nums){
+// 請用你的程式補完這個函式的區塊
+            let max=0;//只要最大連續長度出現，就放入max
+            let compare=0;//用來暫時計算每新的連續0出現，就在此開始計算長度
+            for(i=0;i<nums.length;i++){
+                if(nums[i]==0){
+                    compare+=1;
+                }else{
+                    if(compare>max){
+                    max=compare;
+                }
+                compare=0;   
+                }        
+            }
+            //迴圈結束應再將最後compare結果比較一次，避免結尾為0時而沒跑入ELSE條件比較指令，而導致誤差
+            if(compare>max){
+                max=compare;
+            }
+            console.log(max);
+        }
+
+maxZeros([0, 1, 0, 0]); // 得到 2
+maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0]); // 得到 4
+maxZeros([1, 1, 1, 1, 1]); // 得到 0
+maxZeros([0, 0, 0, 1, 1]); // 得到 3
+   
+    </script>
+    
+</body>
+</html>
