@@ -1,0 +1,204 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: #f2f0eb;
+  // overflow-x: hidden;
+}
+header {
+  position: relative;
+  .menu-btn {
+    position: absolute;
+    width: 50px;
+    height: 6rem;
+    // background-color: black;
+    // top: 20px;
+    right: 10px;
+    color: rgba(0, 0, 0, 0);
+  }
+  .menu-btn::before {
+    content: " ";
+    width: 48px;
+    height: 5px;
+    background-color: #261615;
+    position: absolute;
+    top: 50%;
+    right: 1px;
+    box-shadow: 0px 15px 0px #261615, 0px -15px 0px #261615;
+  }
+  //將漢堡checkbox隱藏
+  #menu1 {
+    position: absolute;
+    z-index: -100;
+    opacity: 0;
+  }
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    font-size: 2em;
+    background-color: #f2f0eb;
+  }
+  //   width: 100vw;
+}
+
+nav {
+  height: 6rem;
+  //   width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #a6907c;
+
+  div.logo {
+    display: flex;
+    width: 50%;
+    h1 {
+      font-size: 20px;
+      text-align: center;
+      margin-left: 1rem;
+    }
+  }
+  ul {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    list-style: none;
+    li {
+      margin: 0.5rem;
+      a {
+        text-decoration: none;
+        color: #261615;
+      }
+    }
+  }
+}
+
+main {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  // width: 100vw;
+  div.items-container {
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    div.items {
+      width: 24%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+      //   padding: 0.5rem;
+      div.pic-container {
+        // display: flex;
+        // align-items: flex-end;
+        width: 100%;
+        height: 0px;
+        padding-bottom: 65.25%;
+        // background-position: center center;
+        // position: relative;
+        overflow: hidden;
+        img {
+          width: 100%;
+          //   position: absolute;
+        }
+      }
+    }
+  }
+}
+p.item-title {
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #261615;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+p.btn {
+  background-color: #a6907c;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+}
+// footer {
+//   position: relative;
+//   .menu-btn {
+//     color: rgba(0, 0, 0, 0);
+//     width: 40px;
+//     height: 40px;
+//     display: block;
+//   }
+//   .menu-btn::before {
+//     content: "";
+//     width: 30px;
+//     height: 3px;
+//     border-radius: 30%;
+//     background-color: black;
+//     position: absolute;
+//     box-shadow: 0px 8px 0px black, 0px -8px 0px black;
+//     top: 10px;
+//   }
+// }
+
+@media screen and(max-width:1201px) {
+  main {
+    div.items-container {
+      width: 90%;
+      div.items {
+        width: 49%;
+      }
+    }
+  }
+}
+
+@media screen and(max-width:601px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  header {
+    ul {
+      flex-direction: column;
+      width: 30%;
+      height: 100vh;
+      position: absolute;
+      top: 6rem;
+      // transform: translateX(500%);
+      right: -100%;
+      // align-items: start;
+      justify-content: start;
+      background-color: #a6907c;
+    }
+    input[type="checkbox"]:checked ~ nav ul {
+      right: 0px;
+      transition: ease 0.3s;
+    }
+    h2 {
+      text-align: center;
+    }
+  }
+  main {
+    margin: 0;
+    div.items-container {
+      width: 90%;
+      div.items {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .menu-btn {
+    display: none;
+  }
+}
