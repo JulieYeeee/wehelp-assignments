@@ -9,13 +9,13 @@ from flask import session
 
 #建立application物件
 app=Flask(__name__)
-app.secret_key="a1a1a2s3a5s3a5s3ax5s"  #session需要的密藥，可為隨機字串
+app.secret_key="a1a1a2s3a5s3a5s3ax5s"  #session需要的密鑰，可為隨機字串
 
 #設定各種路徑與回應函式
 #登入頁回應函式
 @app.route("/")
 def showIndex():
-    return render_template("index.html")
+    return render_template("templates/index.html")
 
 #登入帳密的回應函式，以POST方式處理可避免表單輸入資料顯露於網址中
 @app.route("/signin",methods=["POST"])   
@@ -42,22 +42,22 @@ def login():
 def showSuccess():
     if session.get("account")!=None: #判斷登入資料是否存在，若有存在就成功導入會員頁
         userName=session["account"]
-        return render_template("member.html",name=userName)
+        return render_template("templates/member.html",name=userName)
     else:
-        return redirect("/") #若不存導回首頁
+        return redirect("/") #若不存在導回首頁
 #登出頁面回應函式
 @app.route("/signout")
 def logout():
     if session.get("account")!=None:
         session.pop("account",None)#每當登出就執行Key為account的欄位資料刪除
-        return render_template("signout.html")
+        return render_template("templates/signout.html")
     else:
         return redirect("/")#若不存導回首頁
 #帳密登入錯誤回應函式
 @app.route("/error")
 def showFalse():
     msg=request.args.get("message")
-    return render_template("error.html",wrongMSG=msg)
+    return render_template("templates/error.html",wrongMSG=msg)
 
 
 
