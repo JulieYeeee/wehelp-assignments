@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.title {
+  background-color: #6080bf;
+}
+
+.title h1 {
+  padding: 5rem;
+  text-align: center;
+  color: #f2f2f2;
+}
+
+main .loginForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem;
+}
+
+main h2 {
+  margin: 10px;
+}
+
+main form {
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main form button {
+  font-size: 20px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.relogin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.relogin a {
+  margin: 2rem;
+  font-size: 20px;
+  color: #595959;
+  text-decoration: none;
+}
+
+.success-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.success-main .content {
+  padding: 3rem;
+}
+
+.success-main .content p {
+  font-size: 20px;
+}
+
+.success-main .success-logout a {
+  font-size: 20px;
+  color: #595959;
+  text-decoration: none;
+}
+/*# sourceMappingURL=style.css.map */
