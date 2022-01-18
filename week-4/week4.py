@@ -27,8 +27,8 @@ def login():
     #判斷輸入帳密是否正確
     if strAccount == "test":
         if strPassword == "test":
-            session["account"]=strAccount #將使用者資料吋入session
-            return redirect("/member")
+            session["account"]=strAccount #將使用者資料存入session
+            return redirect("/member")#帳密皆符合導至會員頁
         elif strPassword=="":
             return redirect("/error?message=請輸入密碼")
         else:
@@ -42,19 +42,22 @@ def login():
 def showSuccess():
     if session.get("account")!=None: #判斷登入資料是否存在，若有存在就成功導入會員頁
         userName=session["account"]
-        return render_template("success.html",name=userName)
+        return render_template("member.html",name=userName)
     else:
         return redirect("/") #若不存導回首頁
-
+#登出頁面回應函式
 @app.route("/signout")
 def logout():
-    session.pop("account",None)
-    return render_template("signout.html")
-
+    if session.get("account")!=None:
+        session.pop("account",None)#每當登出就執行Key為account的欄位資料刪除
+        return render_template("signout.html")
+    else:
+        return redirect("/")#若不存導回首頁
+#帳密登入錯誤回應函式
 @app.route("/error")
 def showFalse():
     msg=request.args.get("message")
-    return render_template("false.html",wrongMSG=msg)
+    return render_template("error.html",wrongMSG=msg)
 
 
 
