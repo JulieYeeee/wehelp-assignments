@@ -12,7 +12,7 @@ mydb = mysql.connector.connect(
   password="test1234",
   database="website"
 )
-#已建立memberlist,擁有欄位: id username account password
+
 mycursor = mydb.cursor()
 app=Flask(__name__) #建立Flask物件
 app.secret_key="asdfghjkl" #session密鑰
@@ -40,20 +40,18 @@ def signup():
         mydb.commit()
         return redirect(url_for("memberIndex"))
         
-
-
-    sql="SELECT * FROM member"
-    mycursor.execute(sql)
-    match=mycursor.fetchall()
-    # idNum=0
-    for x in match:
-        n=0
-        while n<len(match):
-            if rgAccount==match[n][2]:
-                return redirect("/error?warning=帳號已被註冊_請登入或重新註冊")              
-            else:
-                n+=1
-                # idNum+=1
+    # sql="SELECT * FROM member"
+    # mycursor.execute(sql)
+    # match=mycursor.fetchall()
+    # # idNum=0
+    # for x in match:
+    #     n=0
+    #     while n<len(match):
+    #         if rgAccount==match[n][2]:
+    #             return redirect("/error?warning=帳號已被註冊_請登入或重新註冊")              
+    #         else:
+    #             n+=1
+    #             # idNum+=1
 
     # sql="INSERT INTO member(name,username,password) VALUES(%s,%s,%s)"
     # val=(rgName,rgAccount,rgPassword)
@@ -64,22 +62,42 @@ def signup():
 
 @app.route("/signin",methods=["post"])
 def signin():
-    signinAccount=request.form["signinAccount"]
-    signinPassword =request.form["signinPassword"]
-    mycursor.execute("SELECT name,username,password FROM member")
-    result=mycursor.fetchall()
-    for x in result:
-        n=0
-        while n<len(result):
-            if signinAccount == result[n][1]:
-                if signinPassword ==result[n][2]:
-                    session["name"]=result[n][0]
-                    return redirect(url_for("success"))
-                else:
-                    return redirect("/error?warning=帳號或密碼錯誤")          
-            else:
-                n+=1
-        return redirect("/error?warning=帳號或密碼錯誤")            
+    signinAccount=request.form["signinAccount"]   #抓取網址上帳號資訊
+    signinPassword =request.form["signinPassword"]  #抓取網址上密碼資訊
+    sql="SELECT id FROM member WHERE username=%s"   #以下先確認抓取的帳號資訊室否資料庫中有吻合資料若有就抓ID
+    val=(signinAccount,)
+    mycursor.execute(sql,val)
+    match=mycursor.fetchall()
+    if match!=[]:  #若資料庫有抓到符合資料,那結果match不會是空列表,並接續抓密碼是否吻合
+         sql="SELECT password FROM member WHERE id=%s"
+         val=(match[0][0],)
+         mycursor.execute(sql,val)
+         pswMatch=mycursor.fetchall()
+         if signinPassword==pswMatch[0][0]: #若密碼與資料庫內紀錄相符就redirect到登入成功頁
+             sql="SELECT name FROM member WHERE id=%s"
+             val=(match[0][0],)
+             mycursor.execute(sql,val)
+             name=mycursor.fetchall()
+             session["name"]=name[0][0]
+             return redirect(url_for("success"))
+         else:
+             return redirect("/error?warning=帳號或密碼錯誤") 
+    else:
+        return redirect("/error?warning=帳號或密碼錯誤")              
+    # mycursor.execute("SELECT name,username,password FROM member")
+    # result=mycursor.fetchall()
+    # for x in result:
+    #     n=0
+    #     while n<len(result):
+    #         if signinAccount == result[n][1]:
+    #             if signinPassword ==result[n][2]:
+    #                 session["name"]=result[n][0]
+    #                 return redirect(url_for("success"))
+    #             else:
+    #                 return redirect("/error?warning=帳號或密碼錯誤")          
+    #         else:
+    #             n+=1
+    #     return redirect("/error?warning=帳號或密碼錯誤")            
 
 
 @app.route("/error",methods=["get"])
