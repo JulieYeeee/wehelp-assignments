@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>會員已登入</title>
+</head>
+<body>
+    <header>
+        <h1>會員登入成功</h1>
+    </header>
+    <main class="accountStatus">
+        <p>{{會員名稱}} 你已成功登入會員系統</p>
+        <a href="/signout">登出帳號</a>
+        <section class="search">
+            <h2>查詢會員姓名</h2>
+            <form action="/api/members">
+                <label for="search">輸入username查詢</label>
+                <input type="text" name="username" >
+                <button type="submit">查詢</button>
+            </form>
+            <div class="result">
+
+            </div>
+            
+        </section>
+    </main>
+    
+</body>
+<script src="/static/app.js"></script>
+</html>

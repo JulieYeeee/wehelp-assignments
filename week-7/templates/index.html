@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>會員登入註冊頁</title>
+</head>
+<body>
+    <header>
+        <h1>登入Joy Life會員系統</h1>
+    </header>
+    <main class="memberIndex">
+        <h2>請進行註冊/登入帳號密碼</h2>
+        <div class="register">
+            
+            <p>註冊會員</p>
+            <form action="/signup" method="POST">
+                <span>
+                    <label for="rgName">註冊名稱</label>
+                    <input type="text" name="rgName" placeholder="中英文大小寫不限">
+                </span>
+                <span>
+                    <label for="rgAccount">註冊帳號</label>
+                    <input type="text" name="rgAccount" placeholder="限英數大小寫不限"> 
+                </span>
+                <span>
+                    <label for="rgPassword">註冊密碼</label>
+                    <input type="password" name="rgPassword" placeholder="限英數大小寫不限">
+                </span>
+                <span>
+                <button type="submit">註冊</button>
+            </span>
+            </form>
+            </div>
+            <hr/>
+            <div class="signin">
+            <p>登入會員</p>
+            <form action="/signin" method="POST">
+                <!-- <span>
+                    <label for="sName">註冊名稱</label>
+                    <input type="text" name="rgName" placeholder="中英文大小寫不限">
+                </span> -->
+                <span>
+                    <label for="signinAccount">帳號</label>
+                    <input type="text" name="signinAccount" > 
+                </span>
+                <span>
+                    <label for="signinPassword">密碼</label>
+                    <input type="password" name="signinPassword" >
+                </span>
+                <span>
+                <button type="submit">登入</button>
+            </span>
+            </form>
+        </div>
+
+        
+    </main>
+    
+</body>
+</html>
